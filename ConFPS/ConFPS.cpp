@@ -25,22 +25,22 @@ int main()
 	DWORD dwBytesWritten = 0;
 	
 	wstring map;
-	map += L'###############';
-	map += L'#.............#';
-	map += L'#.............#';
-	map += L'#.............#';
-	map += L'#.............#';
-	map += L'#.............#';
-	map += L'#.............#';
-	map += L'#.............#';
-	map += L'#.............#';
-	map += L'#.............#';
-	map += L'#.............#';
-	map += L'#.............#';
-	map += L'#.............#';
-	map += L'#.............#';
-	map += L'#.............#';
-	map += L'###############';
+	map += L"################";
+	map += L"#..............#";
+	map += L"#..............#";
+	map += L"#..............#";
+	map += L"#..............#";
+	map += L"#..............#";
+	map += L"#..............#";
+	map += L"#..............#";
+	map += L"#..............#";
+	map += L"#..............#";
+	map += L"#..............#";
+	map += L"#..............#";
+	map += L"#..............#";
+	map += L"#..............#";
+	map += L"#..............#";
+	map += L"################";
 
 	//Game Loop
 	while (true) {
@@ -61,13 +61,14 @@ int main()
 				int nTestY = (int)(fPlayerY + fEyeY * fDistanceToWall);
 
 				//Test if ray is out of bounds
-				if (nTestX < 0 || nTestX >= nMapWidth || nTestY < 0 || nTestY >= nMapWidth) {
+				if (nTestX < 0 || nTestX >= nMapWidth || nTestY < 0 || nTestY >= nMapHeight) {
 					bHitWall = true; //Just srt distance to maximum depth
 					fDistanceToWall = fDepth;
 				}
 				else {
 					//Ray is inbounds so test to see if the ray	cell is a wall block
-					if (map[nTestY * nMapWidth + nTestX] == '#') bHitWall = true;
+					if (map[nTestY * nMapWidth + nTestX] == '#') 
+						bHitWall = true;
 				}
 				
 			}
@@ -77,9 +78,12 @@ int main()
 			int nFloor = nScreenHeight - nCeiling;
 
 			for (int y = 0; y < nScreenHeight; y++) {
-				if (y < nCeiling) screen[y * nScreenWidth + x] = ' ';
-				else if (y > nCeiling && y <= nFloor) screen[y * nScreenWidth + x] = '#';
-				else screen[y * nScreenWidth + x] = ' ';
+				if (y < nCeiling) 
+					screen[y * nScreenWidth + x] = ' ';
+				else if (y > nCeiling && y <= nFloor) 
+					screen[y * nScreenWidth + x] = '#';
+				else 
+					screen[y * nScreenWidth + x] = ' ';
 			}
 
 		}
